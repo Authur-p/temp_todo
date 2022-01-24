@@ -6,16 +6,18 @@ var storage = window.localStorage;
 
 //WELCOME
 var welcome = document.querySelector('#welcome')
-welcome.classList.add('fade')
+// welcome.classList.add('fade')
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.setTimeout(function() {
-    welcome.classList.remove('fade');
-  }, 1000);
+  // window.setTimeout(function() {
+  //   welcome.classList.remove('fade');
+  // }, 600);
+
+  $('#welcome').fadeIn("slow")
 
   window.setTimeout(function() {
-    document.body.removeChild(welcome);
-  }, 3000);
+    $("#welcome").fadeOut("slow");
+  }, 100);
 });
 
 
@@ -61,10 +63,22 @@ var addTaskLocal = function(taskString) {
 
 var deleteTask = function() {      
   var listItem = this.parentNode;  
-  var ul = listItem.parentNode;    
+  var ul = listItem.parentNode;  
+  
+  if (confirm("Do you want to delete this item?")){
+    ul.removeChild(listItem);   
+    storage.removeItem(listItem.childNodes[1].innerText)
+  };
+
+};
+
+var checkTask = function() {      
+  var listItem = this.parentNode;  
+  var ul = listItem.parentNode; 
   ul.removeChild(listItem);   
   storage.removeItem(listItem.childNodes[1].innerText)
 };
+
 
 
 var bindTaskEvents = function(taskListItem) {  
@@ -85,7 +99,6 @@ function allStorage() {
   while ( i-- ) {
       values.push(storage.getItem(keys[i]) );
   }
-
   return values;
 }
 
