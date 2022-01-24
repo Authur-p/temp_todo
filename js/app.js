@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //   welcome.classList.remove('fade');
   // }, 600);
 
-  $('#welcome').fadeIn("slow")
+  $('#welcome').fadeIn(3000)
 
   window.setTimeout(function() {
-    $("#welcome").fadeOut("slow");
-  }, 100);
+    $("#welcome").fadeOut(3000);
+  }, 500);
 });
 
 
